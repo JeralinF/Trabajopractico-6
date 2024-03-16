@@ -1,16 +1,11 @@
-FROM python:3.8
+FROM python:3.11
 
-WORKDIR /app
+WORKDIR /code
 
-# Instalar las dependencias de la aplicación
-COPY requirements.txt requirements.txt
+COPY requirements.txt /code/requirements.txt
 RUN pip install -r requirements.txt
 
-# Copiar la aplicación al contenedor
-COPY . .
+COPY . /code
 
-# Puerto en el que escuchará la aplicación
 EXPOSE 8000
-
-# Comando para ejecutar la aplicación
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn", "main:app", "--host","0.0.0.0","--port","8000"]

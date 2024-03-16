@@ -9,7 +9,7 @@ app = FastAPI(
     version="0.0.1"
 )
 
-model = joblib.load("model/modelo.pkl")
+model = joblib.load("modelo.pkl")
 
 
 @app.post("/api/v1/modelo.pkl", tags=["modelo.pkl"])
@@ -87,4 +87,5 @@ async def predict(
     except Exception as e:
         raise HTTPException(
             detail=str(e),
-            status_code=status.HTTP_400_BAD_REQUEST)
+            status_code= status.HTTP_400_BAD_REQUEST
+        )
